@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Future Vision Transport</title>
+</head>
+<body>
+
+    <header>
+        <div class="title">
+            <h1>Future Vision Transport</h1>
+            <h2>Image segmentation for autonomous vehicles</h2>
+            <h3>Demo - Flask API deployed with Azure App Service</h3>
+            <hr>
+        </div>
+    </header>
+   
+   <main>
+       <form action="/prediction" method="post">
+            <label for="file_select"><h3>Please choose an image in the list</h3></label>
+            
+            <select name="file" id="file_select">
+                {% for file in file_list %}
+                <option value= "{{file}}" SELECTED>{{file}}</option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Submit to launch prediction" align="middle"/>
+        </form>
+       <br>
+       <img src="{{ url_for('static', filename='fvt_logo.png') }}" height="256" width="512"/>
+   </main>
+
+</body>

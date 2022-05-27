@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Future Vision Transport</title>
+</head>
+<body>
+
+    <header>
+        <div class="title">
+            <h2>Future Vision Transport : Image segmentation for autonomous vehicles</h2>
+            <h3>Demo - Flask API deployed with Azure App Service</h3>
+            <hr>
+        </div>
+    </header>
+   
+   <main>
+    <h4>Image name : <font color="green">{{image_data}}</font></h4>
+    <hr>
+    <table>
+           <tr>
+               <td>
+                   <h3 align=center>Original Image</h3>
+                   <img src='{{ url_for("static", filename="images/"+image_data) }}' height="256" width="512"/>
+                </td>
+                <td>
+                    <h3 align=center>True Mask</h3>
+                    <img src='{{ url_for("static", filename="outputs/colorized_mask.png") }}' height="256" width="512"/>
+                </td>
+            </tr>
+           
+           <tr>
+               <td>
+                   <h3 align=center>Predicted Mask</h3>
+                   <img src='{{ url_for("static", filename="outputs/prediction.png") }}' height="256" width="512"/>
+                </td>
+                <td>
+                    <div class='my-legend'>
+                    <div class='legend-title'>Labels</div>
+                        <div class='legend-scale'>
+                          <ul class='legend-labels'>
+                            <li><span style='background:#cccccc;'></span>Void</li>
+                            <li><span style='background:#fa0000;'></span>Flat</li>
+                            <li><span style='background:#f3e400;'></span>Construction</li>
+                            <li><span style='background:#00ec00;'></span>Object</li>
+                            <li><span style='background:#00a03a;'></span>Nature</li>
+                            <li><span style='background:#008fdd;'></span>Sky</li>
+                            <li><span style='background:#1300a8;'></span>Human</li>
+                            <li><span style='background:#000000;'></span>Vehicle</li>
+                          </ul>
+                        
+                          <style type='text/css'>
+                            .my-legend .legend-title {
+                              text-align: left;
+                              margin-top: 20px;
+                              margin-bottom: 10px;
+                              text-indent: 10%;
+                              font-weight: bold;
+                              }
+                            .my-legend .legend-scale ul {
+                              margin: 0;
+                              margin-bottom: 5px;
+                              float: left;
+                              list-style: none;
+                              }
+                            .my-legend .legend-scale ul li {
+                              font-size: 90%;
+                              list-style: none;
+                              line-height: 18px;
+                              margin-bottom: 5px;
+                              }
+                            .my-legend ul.legend-labels li span {
+                              display: block;
+                              float: left;
+                              height: 16px;
+                              width: 30px;
+                              margin-right: 5px;
+                              margin-left: 0;
+                              border: 1px solid #999;
+                              }
+                          </style>
+                </td>                
+            </tr>
+    </table>   
+   </main>
+
+</body>
